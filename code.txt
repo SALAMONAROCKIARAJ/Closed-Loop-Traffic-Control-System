@@ -1,0 +1,155 @@
+code :
+
+int loop1 = 5;
+int loop2 = 4;
+int loop3 = 6;
+const int trig1 = 13;
+const int trig2 = 12;
+const int trig3 = 11;
+const int echo1 = 9;
+const int echo2 = 10;
+const int echo3 = 8;
+
+void setup() {
+  // put your setup code here, to run once:
+ Serial.begin(9600);
+ 
+ pinMode(trig1,OUTPUT);
+ pinMode(echo1,INPUT);
+ pinMode(trig2,OUTPUT);
+ pinMode(echo2,INPUT);
+ pinMode(trig3,OUTPUT);
+ pinMode(echo3,INPUT);
+ pinMode(loop1,OUTPUT);
+ pinMode(loop2,OUTPUT);
+ pinMode(loop3,OUTPUT);
+}
+
+void loop() 
+
+{
+  // put your main code here, to run repeatedly:
+  float s1,s2,s3;
+  s1=calculatedistance(trig1 , echo1);
+  s2=calculatedistance(trig2 , echo2);
+  s3=calculatedistance(trig3 , echo3);
+  Serial.print("distance1  ");
+  Serial.println(s1);
+  delayMicroseconds(4000);
+  Serial.print("distance2  ");
+  Serial.println(s2);
+  delayMicroseconds(4000);
+  Serial.print("distance3  ");
+  delayMicroseconds(4000);
+  Serial.println(s3);
+ 
+  
+  if (s1<=40)
+{
+     digitalWrite( loop1 , HIGH);
+     digitalWrite( loop2 ,LOW);
+     digitalWrite( loop3 , LOW);
+     delayMicroseconds(4000);
+     
+}
+  if (s2<=40)
+{
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 ,HIGH);
+     digitalWrite( loop3 , LOW);
+     delayMicroseconds(4000);    
+}
+  if (s3<=40)
+{
+    
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 ,LOW);
+     digitalWrite( loop3 , HIGH);
+     delayMicroseconds(4000);
+     
+}
+
+  if (s1<=60)
+{
+    if(s2<=60)
+    {
+      if(s3<=60)
+      {
+    
+     digitalWrite( loop1 , HIGH);
+     digitalWrite( loop2 ,LOW);
+     digitalWrite( loop3 , LOW);
+       delay(4000);
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 , HIGH);
+     digitalWrite( loop3 , LOW);
+        delay(4000);
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 , LOW);
+     digitalWrite( loop3 , HIGH);
+         delay(4000);
+ }
+  }
+  }
+  if (s1<=50)
+{
+    if(s2<=50)
+    {
+      
+    
+     digitalWrite( loop1 , HIGH);
+     digitalWrite( loop2 , LOW);
+     digitalWrite( loop3 , LOW);
+       delay(4000);
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 , HIGH);
+     digitalWrite( loop3 , LOW);
+        delay(4000);    
+ }
+  }
+  if (s2<=50)
+{
+    if(s3<=50)
+    {
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 , HIGH);
+     digitalWrite( loop3 , LOW);
+       delay(4000);
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 , LOW);
+     digitalWrite( loop3 , HIGH);
+        delay(4000);    
+ }
+  }
+  if (s3<=50)
+{
+    if(s1<=50)
+    {
+     digitalWrite( loop1 , HIGH);
+     digitalWrite( loop2 , LOW);
+     digitalWrite( loop3 , LOW);
+       delay(4000);
+     digitalWrite( loop1 , LOW);
+     digitalWrite( loop2 , LOW);
+     digitalWrite( loop3 , HIGH);
+        delay(4000);    
+ }
+  } 
+  
+} 
+
+
+int calculatedistance(float pingPin , float echoPin){
+    long duration,distance;
+  pinMode(pingPin, OUTPUT);
+  digitalWrite(pingPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(pingPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(pingPin, LOW);
+
+  pinMode(echoPin, INPUT);
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration*0.034/2;
+  return distance; 
+}
