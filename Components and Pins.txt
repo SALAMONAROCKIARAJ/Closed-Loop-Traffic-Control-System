@@ -1,0 +1,51 @@
+Components Required :     
+                                                                                       
+Arduino Board
+LED 
+Breadboard
+Ultrasonic Sensor 
+Wires 
+Resistors
+
+Software Required: Tinkercad online simulator 
+(Note: I don’t have real-time components to do it but this software gives you a real-time experience )
+ 
+
+Pin connection :
+
+loop 1 , loop2 , loop 3 -  pin 4,5,6
+
+Loop 1 : 
+
+              red -path2
+             yellow -path3
+            green -path1  
+
+Loop 2 : 
+
+              red -path 3
+             yellow -path1
+            green -path 2
+
+Loop 3 : 
+
+              red - path1
+             yellow-path2
+            green - path3
+
+
+ultrasonic sensor 1:
+
+                 trig pin1-13
+               echo pin1-9
+
+ultrasonic sensor 2:
+
+                 trig pin2-12
+               echo pin2-10
+
+ultrasonic sensor 3:
+
+                 trig pin3-11
+               echo pin3-8
+
