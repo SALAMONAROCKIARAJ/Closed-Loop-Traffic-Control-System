@@ -5,7 +5,7 @@ Repository for 3 way closed loop traffic control system using Ultrasonic sensor
 # About my work :
        Usually, the traffic system is open-loop but we can change it to a closed-loop and make our traffic system smart using an ultrasonic sensor.
 
-Why do we use an ultrasonic sensor, Why not cameras?
+# Why do we use an ultrasonic sensor, Why not cameras?
        Actually in some rural areas camera is not implemented and another reason is it is economical but for a more efficient way, we go for ML models to control traffic but I am not well versed in training ml models using image processing  so, I am made a closed-loop traffic control system with help of an ultrasonic sensor
 
 
